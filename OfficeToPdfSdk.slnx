@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/assets/" />
+  <Folder Name="/samples/" />
+  <Folder Name="/samples/webstacks/">
+    <File Path="samples/webstacks/docker-compose.yml" />
+    <Project Path="samples/webstacks/OfficeToPdfSdk.BlazorWebApp/OfficeToPdfSdk.BlazorWebApp.csproj" />
+    <Project Path="samples/webstacks/OfficeToPdfSdk.ConversionService/OfficeToPdfSdk.ConversionService.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/OfficeToPdfSdk.Hosting/OfficeToPdfSdk.Hosting.csproj" />
+    <Project Path="src/OfficeToPdfSdk/OfficeToPdfSdk.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/integrationtests/">
+    <Project Path="tests/integrationstests/OfficeToPdfSdk.Hosting.IntegrationTests/OfficeToPdfSdk.Hosting.IntegrationTests.csproj" />
+  </Folder>
+  <Folder Name="/tests/unittests/">
+    <Project Path="tests/unittests/OfficeToPdfSdk.Hosting.UnitTests/OfficeToPdfSdk.Hosting.UnitTests.csproj" />
+    <Project Path="tests/unittests/OfficeToPdfSdk.UnitTests/OfficeToPdfSdk.UnitTests.csproj" />
+  </Folder>
+</Solution>

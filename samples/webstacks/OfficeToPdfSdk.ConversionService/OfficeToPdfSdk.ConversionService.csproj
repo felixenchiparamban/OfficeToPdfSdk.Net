@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>$(Company).$(MSBuildProjectName)</RootNamespace>
+  </PropertyGroup>
+
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\OfficeToPdfSdk\OfficeToPdfSdk.csproj" />
+    <ProjectReference Include="..\..\..\src\OfficeToPdfSdk.Hosting\OfficeToPdfSdk.Hosting.csproj" />
+  </ItemGroup>
+
+</Project>

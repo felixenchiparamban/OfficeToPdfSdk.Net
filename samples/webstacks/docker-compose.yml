@@ -1,0 +1,41 @@
+services:
+
+  # ─────────────────────────────────────────────────────────
+  # Office to PDF REST API — exposes HTTP endpoints on :5000
+  # ─────────────────────────────────────────────────────────
+  conversion-service:
+    build:
+      context: ../..   # repo root (Dockerfile copies from there)
+      dockerfile: samples/webstacks/OfficeToPdfSdk.ConversionService/Dockerfile
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5000
+      - Logging__LogLevel__Default=Information
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s   # LibreOffice takes a moment to initialise
+
+  # ─────────────────────────────────────────────────────────
+  # Blazor Web App — UI front-end on :8080
+  # ─────────────────────────────────────────────────────────
+  blazor-webapp:
+    build:
+      context: ../..
+      dockerfile: samples/webstacks/OfficeToPdfSdk.BlazorWebApp/Dockerfile
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - Logging__LogLevel__Default=Information
+      - ConversionService__BaseUrl=http://conversion-service:5000
+    depends_on:
+      conversion-service:
+        condition: service_healthy

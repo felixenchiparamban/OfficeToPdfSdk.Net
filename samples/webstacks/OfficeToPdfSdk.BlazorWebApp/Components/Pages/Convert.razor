@@ -1,0 +1,37 @@
+﻿@page "/convert"
+@rendermode InteractiveServer
+
+<h3>Convert to PDF</h3>
+
+<div class="mb-3">
+    <label class="form-label">Select Office Document:</label>
+    <InputFile OnChange="@HandleFileSelected" accept=".doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp" />
+</div>
+
+@if (_uploadedFile != null)
+{
+    <div class="alert alert-info">
+        <strong>File Selected:</strong> @_uploadedFile.FileName (@FormatFileSize(_uploadedFile.FileBytes?.Length ?? 0))
+    </div>
+}
+
+@if (_uploadedFile != null)
+{
+    <button class="btn btn-primary" @onclick="HandleConvert" type="button">
+        Convert to PDF
+    </button>
+}
+
+@if (_uploadedFile != null && _showDownloadButton && _pdfBytes != null)
+{
+    <button class="btn btn-success ms-2" @onclick="DownloadPdf" type="button">
+        ↓ Download PDF
+    </button>
+}
+
+@if (_message != null)
+{
+    <div class="alert alert-@_alertType mt-3">
+        @_message
+    </div>
+}

@@ -1,0 +1,36 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>14</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <NeutralLanguage>en</NeutralLanguage>
+    <!-- Suppress common logging analyzer recommendations -->
+    <NoWarn>$(NoWarn);CA1848;CA1873</NoWarn>
+    <Deterministic>true</Deterministic>
+    <RootNamespace>FelixELabs</RootNamespace>
+
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    
+    <Authors>Felix Enchiparamban</Authors>
+    <Company>FelixELabs</Company>
+    <Product>OfficeToPdfSdk</Product>
+    <Copyright>Copyright (c) FelixELabs contributors</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/felixenchiparamban/OfficeToPdfSdk</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/felixenchiparamban/OfficeToPdfSdk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <!-- MinVer: derives Version automatically from git tags (e.g. v1.2.3) -->
+  <ItemGroup>
+    <PackageReference Include="MinVer" Version="6.0.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>
